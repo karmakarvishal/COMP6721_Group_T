@@ -13,11 +13,11 @@ from model import build_model
 # Define computation device.
 device = 'cpu'
 # Class names.
-sign_names_df = pd.read_csv('../input/signnames.csv')
+sign_names_df = pd.read_csv('/content/input/signnames.csv')
 class_names = sign_names_df.SignName.tolist()
 # DataFrame for ground truth.
 gt_df = pd.read_csv(
-    '../input/GTSRB_Final_Test_GT/GT-final_test.csv',
+    '/content/input/GT-final_test.csv',
     delimiter=';'
 )
 gt_df = gt_df.set_index('Filename', drop=True)
@@ -30,7 +30,7 @@ model = build_model(
 model = model.eval()
 model.load_state_dict(
     torch.load(
-        '../outputs/model.pth', map_location=device
+        '/content/outputs/model.pth', map_location=device
     )['model_state_dict']
 )
 
@@ -84,10 +84,10 @@ def visualize_and_save_map(
         np.array(result, dtype=np.uint8),
         np.array(orig_image, dtype=np.uint8)
     ])
-    cv2.imshow('Result', img_concat)
+    #cv2.imshow('Result', img_concat)
     cv2.waitKey(1)
     if save_name is not None:
-        cv2.imwrite(f"../outputs/test_results/CAM_{save_name}.jpg", img_concat)
+        cv2.imwrite(f"/content/outputs/test_results/CAM_{save_name}.jpg", img_concat)
 
 
 features_blobs = []
@@ -113,7 +113,7 @@ transform = A.Compose([
 
 counter = 0
 # Run for all the test images.
-all_images = glob.glob('../input/GTSRB_Final_Test_Images/GTSRB/Final_Test/Images/*.ppm')
+all_images = glob.glob('/content/input/GTSRB/Final_Test/Images/*.ppm')
 correct_count = 0
 frame_count = 0 # To count total frames.
 total_fps = 0 # To get the final frames per second. 
