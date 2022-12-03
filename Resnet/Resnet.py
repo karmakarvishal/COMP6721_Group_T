@@ -1,17 +1,7 @@
-###TO DO
-#Change architecture to resnet 50, currently resnet 34
-#change loss function, use log function
-#Add test dataset
-#organize everything into methods and divide it in different files
-#model taken from:  https://blog.paperspace.com/writing-resnet-from-scratch-in-pytorch/
 #architecture from: https://www.researchgate.net/figure/ResNet-18-Architecture_tbl1_322476121
 
 
-
-import torch
 import numpy as np
-import torchvision.transforms as transforms
-import torchvision
 import torch.utils.data as td
 import matplotlib.pyplot as plt
 import torch.nn as nn
@@ -20,30 +10,6 @@ import torch.nn.functional as F
 import gc
 
 
-preprocess = transforms.Compose([
-    transforms.Resize((224,224)),
-    transforms.ToTensor(),
-    transforms.Normalize(
-        mean=[0.4914, 0.4822, 0.4465],
-        std=[0.2023, 0.1994, 0.2010],
-    ),
-])
-train_path = "Training"
-train_path = "/Users/antoinecyr/Documents/comp 6721/Project/Traffic-Sign-Classification/Training"
-
-#data set from https://btsd.ethz.ch/shareddata/
-train_data = torchvision.datasets.ImageFolder(root=train_path, transform=preprocess)
-
-train_data_loader = torch.utils.data.DataLoader(train_data, batch_size=64, shuffle=True,  num_workers=0)
-
-print(train_data_loader)
-print(len(train_data_loader))
-
-'''image = plt.imread('Training\\00000\\01153_00000.ppm')
-fig, ax = plt.subplots()
-ax.imshow(image)
- 
-plt.show()'''
 
 class ResidualBlock(nn.Module):
     def __init__(self, in_channels, out_channels, stride = 1, downsample = None):
@@ -118,53 +84,3 @@ class ResNet(nn.Module):
         return x
 
     num_classes = 62
-num_epochs = 20
-batch_size = 16
-learning_rate = 0.01
-use_cuda = torch.cuda.is_available()
-device = torch.device("cuda" if use_cuda else "cpu")
-
-model = ResNet(ResidualBlock,62).to(device)
-
-# Loss and optimizer
-criterion = nn.CrossEntropyLoss()
-optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate, weight_decay = 0.001, momentum = 0.9)  
-
-# Train the model
-total_step = len(train_data_loader)
-
-for epoch in range(num_epochs):
-    for i, (images, labels) in enumerate(train_data_loader):  
-        # Move tensors to the configured device
-        images = images.to(device)
-        labels = labels.to(device)
-        
-        # Forward pass
-        outputs = model(images)
-        loss = criterion(outputs, labels)
-        
-        # Backward and optimize
-        optimizer.zero_grad()
-        loss.backward()
-        optimizer.step()
-        del images, labels, outputs
-        torch.cuda.empty_cache()
-        gc.collect()
-
-        print ('Epoch [{}/{}], Loss: {:.4f}' 
-                   .format(epoch+1, num_epochs, loss.item()))
-            
-    # Validation
-    with torch.no_grad():
-        correct = 0
-        total = 0
-        for images, labels in valid_loader:
-            images = images.to(device)
-            labels = labels.to(device)
-            outputs = model(images)
-            _, predicted = torch.max(outputs.data, 1)
-            total += labels.size(0)
-            correct += (predicted == labels).sum().item()
-            del images, labels, outputs
-    
-        print('Accuracy of the network on the {} validation images: {} %'.format(5000, 100 * correct / total)) 
