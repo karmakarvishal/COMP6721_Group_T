@@ -26,6 +26,7 @@ Go to : Transfer Learning/GoogleNet/GoogleNet.ipynb
 Then Run all the code blocks it will print the result on the terminal.
 
 Datasets Download Link:
+<br>
 GTSRB Train Dataset: https://sid.erda.dk/public/archives/daaeac0d7ce1152aea9b61d9f1e19370/GTSRB_Final_Training_Images.zip
 GTSRB Test Dataset:  https://sid.erda.dk/public/archives/daaeac0d7ce1152aea9b61d9f1e19370/GTSRB_Final_Test_Images.zip
 
