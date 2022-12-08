@@ -4,4 +4,4 @@ Traffic Sign Recognition (TSR) is undoubtedly one of the most important problems
 Github repo: https://github.com/karmakarvishal/COMP6721_Group_T
 Video presentation: 
 
-In order to run the resnet trainings, you need to run the jupyter notebook of the trainin you want. Each file is name with the architecture and data set is trained on. (resnet18_BTSD.ipynb for the training of resnet18 on the data set BTSD.)
+In order to run the resnet trainings, you need to run the jupyter notebook of the training you want. Each file is name with the architecture and data set it is trained on. Example:(resnet18_BTSD.ipynb for the training of resnet18 on the data set BTSD.)
