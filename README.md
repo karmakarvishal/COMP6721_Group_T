@@ -38,3 +38,5 @@ BTSD Test Dataset:  https://btsd.ethz.ch/shareddata/BelgiumTSC/BelgiumTSC_Testin
 
 rMASTIF Train Dataset: http://www.zemris.fer.hr/~kalfa/Datasets/rMASTIF/rmastif_train.tar.gz
 rMASTIF Test Dataset:  http://www.zemris.fer.hr/~kalfa/Datasets/rMASTIF/rmastif_test.tar.gz
+
+*All the Evaluation Metrics like F1-score,Precision & Recall are inside the .ipynb files of each model in the repository.
