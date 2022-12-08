@@ -1,7 +1,6 @@
 # Traffic-Sign-Classification
 Traffic Sign Recognition (TSR) is undoubtedly one of the most important problems in the field of driverless cars and advanced driver assistance systems (ADAS). TSR enables the front-facing smart cameras mounted on the car to recognize the signboards so that the car can act accordingly. Some examples include recognizing stop signs, speed limit, turn signs etc.
 
-Github repo: https://github.com/karmakarvishal/COMP6721_Group_T
 Video presentation: https://liveconcordia-my.sharepoint.com/:f:/g/personal/na_bajwa_live_concordia_ca/EoyQ9c_J-z1FuWL5cFCyi6UBYknpENgmHqOEiG6EskmoBA?e=REVrHb
 
 Requirements for running the code:
