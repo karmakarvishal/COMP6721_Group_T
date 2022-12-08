@@ -9,7 +9,7 @@ Requirements for running the code:
 <li>2.Install Python 3.0+</li>
 <li>Other packages that needs to installed are added in the .ipynb files.</li>
 
-
+<br>
 
 
 In order to run the resnet trainings, you need to run the jupyter notebook of the training you want. Each file is named with the architecture and data set it is trained on. Example:(resnet18_BTSD.ipynb for the training of resnet18 on the data set BTSD.)
