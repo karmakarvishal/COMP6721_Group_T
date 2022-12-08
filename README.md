@@ -40,3 +40,4 @@ rMASTIF Train Dataset: http://www.zemris.fer.hr/~kalfa/Datasets/rMASTIF/rmastif_
 rMASTIF Test Dataset:  http://www.zemris.fer.hr/~kalfa/Datasets/rMASTIF/rmastif_test.tar.gz
 
 *All the Evaluation Metrics like F1-score,Precision & Recall are inside the .ipynb files of each model in the repository.
+* Due to space issue inside latex we were not able to add it in the Final Report.
